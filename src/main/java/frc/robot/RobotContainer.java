@@ -58,7 +58,7 @@ public class RobotContainer {
   public Command getDriveCommand() {
     return m_drivetrain.drive(
       () -> m_driverController.getLeftY(),
-      () -> m_driverController.getRightY()
+      () -> -m_driverController.getRightX()
     );
   }
 }
