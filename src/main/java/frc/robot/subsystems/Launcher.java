@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+import static frc.robot.Constants.LauncherConstants.kChuteID;
+import static frc.robot.Constants.LauncherConstants.kChuteSpeed;
 import static frc.robot.Constants.LauncherConstants.kFlyWheelID;
 import static frc.robot.Constants.LauncherConstants.kFlywheelSpeed;
 import static frc.robot.Constants.LauncherConstants.kIntakeID;
@@ -20,13 +22,17 @@ public class Launcher extends SubsystemBase {
   // CHECK MOTORTYPE BEFORE DEPLOYING CODE
   private SparkMax flyWheelMotor;
   private SparkMax intakeMotor;
+  private SparkMax chuteMotor;
 
   /** Creates a new Launcher. */
   public Launcher() {
     flyWheelMotor = new SparkMax(kFlyWheelID, MotorType.kBrushed);
     intakeMotor = new SparkMax(kIntakeID, MotorType.kBrushed);
+    chuteMotor = new SparkMax(kChuteID, MotorType.kBrushed);
+
+    setDefaultCommand(runIntake());
   }
-  
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
@@ -39,8 +45,7 @@ public class Launcher extends SubsystemBase {
       },
       () -> {
         flyWheelMotor.set(0);
-      },
-      this
+      }
     );
   }
 
@@ -51,8 +56,18 @@ public class Launcher extends SubsystemBase {
       },
       () -> {
         intakeMotor.set(0);
+      }
+    );
+  }
+
+  public Command runChute() {
+    return Commands.runEnd(
+      () -> {
+        chuteMotor.set(kChuteSpeed);
       },
-      this
+      () -> {
+        chuteMotor.set(0);
+      }
     );
   }
 }

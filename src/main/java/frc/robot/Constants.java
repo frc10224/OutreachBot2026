@@ -27,7 +27,9 @@ public final class Constants {
   public static class LauncherConstants {
     public static final int kFlyWheelID = 5;
     public static final int kIntakeID = 6;
+    public static final int kChuteID = 7;
     public static final double kFlywheelSpeed = 0.1;
     public static final double kIntakeSpeed = 0.1;
+    public static final double kChuteSpeed = 0.1;
   }
 }
