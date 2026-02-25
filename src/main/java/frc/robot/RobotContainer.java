@@ -42,8 +42,11 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    m_driverController.x().toggleOnTrue(m_launcher.runFlywheel());
-    m_driverController.a().whileTrue(m_launcher.runIntake());
+    m_driverController.x().toggleOnTrue(m_launcher.runIntake());
+    m_driverController.a().toggleOnTrue(m_launcher.runFlywheel());
+    
+    m_driverController.leftTrigger().whileTrue(m_launcher.runChute(-1));
+    m_driverController.rightTrigger().whileTrue(m_launcher.runChute(1));
   }
 
   /**

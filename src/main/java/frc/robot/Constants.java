@@ -19,17 +19,17 @@ public final class Constants {
 
   public static class DrivetrainConstants {
     public static final int kLeftFrontID = 1;
-    public static final int kRightFrontID = 2;
-    public static final int kLeftBackID = 4;
+    public static final int kLeftBackID = 2;
     public static final int kRightBackID = 3;
+    public static final int kRightFrontID = 4;
   }
 
   public static class LauncherConstants {
-    public static final int kFlyWheelID = 5;
-    public static final int kIntakeID = 6;
-    public static final int kChuteID = 7;
-    public static final double kFlywheelSpeed = 0.1;
-    public static final double kIntakeSpeed = 0.1;
-    public static final double kChuteSpeed = 0.1;
+    public static final int kFlyWheelID = 6;
+    public static final int kIntakeID = 7;
+    public static final int kChuteID = 5;
+    public static final double kFlywheelSpeed = 0.5;
+    public static final double kIntakeSpeed = 0.25;
+    public static final double kChuteSpeed = 0.25;
   }
 }

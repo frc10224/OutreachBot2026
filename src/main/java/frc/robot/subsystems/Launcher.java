@@ -19,18 +19,15 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Launcher extends SubsystemBase {
-  // CHECK MOTORTYPE BEFORE DEPLOYING CODE
   private SparkMax flyWheelMotor;
   private SparkMax intakeMotor;
   private SparkMax chuteMotor;
 
   /** Creates a new Launcher. */
   public Launcher() {
-    flyWheelMotor = new SparkMax(kFlyWheelID, MotorType.kBrushed);
+    flyWheelMotor = new SparkMax(kFlyWheelID, MotorType.kBrushless);
     intakeMotor = new SparkMax(kIntakeID, MotorType.kBrushed);
-    chuteMotor = new SparkMax(kChuteID, MotorType.kBrushed);
-
-    setDefaultCommand(runIntake());
+    chuteMotor = new SparkMax(kChuteID, MotorType.kBrushless);
   }
 
   @Override
@@ -60,10 +57,10 @@ public class Launcher extends SubsystemBase {
     );
   }
 
-  public Command runChute() {
+  public Command runChute(int direction) {
     return Commands.runEnd(
       () -> {
-        chuteMotor.set(kChuteSpeed);
+        chuteMotor.set(kChuteSpeed * direction);
       },
       () -> {
         chuteMotor.set(0);
